@@ -15,17 +15,17 @@ public class Test {
     for (int i = 0; i < numItems; i++) {
       System.out.println("ITEM no. " + (i + 1));
       System.out.println("Type (B or V):");
-      char inputTypeChar = in.nextLine().toLowerCase(Locale.ROOT).charAt(0);
+      char inputType = in.nextLine().toLowerCase(Locale.ROOT).charAt(0);
 
-      if (inputTypeChar=='b' ||inputTypeChar=='v') {
+      if (inputType=='b' ||inputType=='v') {
       System.out.println("Title:");
       inputTitle = in.nextLine();}
       else
       inputTitle = "";
 
-      switch (inputTypeChar) {
-        case 'b' -> loanItems.add(new Book(inputTitle, "Book"));
-        case 'v' -> loanItems.add(new Video(inputTitle, "Video"));
+      switch (inputType) {
+        case 'b' -> loanItems.add(new Book(inputTitle));
+        case 'v' -> loanItems.add(new Video(inputTitle));
         default -> i = i-1;
       }
     }
@@ -34,7 +34,7 @@ public class Test {
     System.out.println("-------------------");
     System.out.println("ID\tTYPE\tTITLE");
     for (int i = 0; i < loanItems.size(); i++) {
-      System.out.printf("%d\t%s\t%s\n",(i+1),loanItems.get(i).getType(),loanItems.get(i).getTitle());
+      System.out.printf("%d\t%s\t%s\n",(i+1),loanItems.get(i).getClass().getSimpleName(),loanItems.get(i).getTitle());
     }
   }
 
